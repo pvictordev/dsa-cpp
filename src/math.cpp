@@ -1,4 +1,5 @@
 #include <iostream>
+#include "math.h"  // import math.h to assure consistency between method declarations, even though it can seem redundant
 
 void printResult(int value);  
 

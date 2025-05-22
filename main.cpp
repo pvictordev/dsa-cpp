@@ -1,8 +1,6 @@
 #include <iostream>
-
-int add(int a, int b);
-int multiply(int a, int b);
-void printResult(int value);  
+#include "math.h" 
+#include "utils.h"
 
 int main() {
     int sum = add(2, 3);

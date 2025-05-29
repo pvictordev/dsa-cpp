@@ -6,6 +6,7 @@ void run_vector();
 void run_linked_list();
 void run_stack();
 void run_queue();
+void run_binary_tree();
 
 int main() {
     cout << "Data Structures \n\n";
@@ -16,6 +17,8 @@ int main() {
     run_linked_list(); 
     run_stack(); 
     run_queue(); 
+    run_binary_tree();
+
     
     return 0;
 }

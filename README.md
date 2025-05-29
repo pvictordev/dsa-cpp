@@ -14,7 +14,7 @@ To simplify the compile-and-run workflow, I created a Bash script that continuou
 git clone https://github.com/pvictordev/dsa-cpp.git
 ```
 
-1. Run the script or use make run:
+2. Run the script or use make run:
 
 ```bash
 chmod +x scripts/build-and-run.sh

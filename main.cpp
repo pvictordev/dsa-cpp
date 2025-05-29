@@ -4,6 +4,7 @@ using namespace std;
 void run_array();
 void run_vector();
 void run_linked_list();
+void run_doubly_linked_list();
 void run_stack();
 void run_queue();
 void run_binary_tree();
@@ -15,6 +16,7 @@ int main() {
     run_array(); 
     run_vector();
     run_linked_list(); 
+    run_doubly_linked_list(); 
     run_stack(); 
     run_queue(); 
     run_binary_tree();

@@ -6,6 +6,8 @@ INCLUDE_DIR="$(pwd)/include"
 BUILD_DIR="$(pwd)/build"
 MAIN_CPP="$(pwd)/main.cpp"
 
+mkdir -p "$BUILD_DIR"
+
 WATCHED_FILES=$(find "$STR_DIR" -name "*.cpp"; echo "$MAIN_CPP")
 
 RUN_COMMAND=$(cat <<EOF

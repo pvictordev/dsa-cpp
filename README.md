@@ -14,7 +14,10 @@ To simplify the compile-and-run workflow, I created a Bash script that continuou
 git clone https://github.com/pvictordev/dsa-cpp.git
 ```
 
-2. Run the script or use make run:
+2. Install the following packages:
+   `sudo dnf install entr` , `sudo dnf install gcc-c++`
+
+3. Run the script or use make run:
 
 ```bash
 chmod +x scripts/build-and-run.sh

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-STR_DIR="$(pwd)/structures"
+STR_DIR="$(pwd)/dsa"
 # SRC_DIR="$(pwd)/src"
 INCLUDE_DIR="$(pwd)/include"
 BUILD_DIR="$(pwd)/build"

@@ -10,6 +10,7 @@ void run_stack();
 void run_queue();
 void run_binary_tree();
 void run_hash_table();
+void run_heap(); 
 
 // Composed data structures
 void run_graph(); 
@@ -34,10 +35,11 @@ void basic_structures_menu() {
     cout << "3. Linked List\n";
     cout << "4. Doubly Linked List\n";
     cout << "5. Stack\n";
-    cout << "6. Queue\n";
-    cout << "7. Binary Tree\n";
-    cout << "8. Hash Table\n";
-    cout << "9. Run All Basic Structures\n";
+    cout << "6. Heap\n";
+    cout << "7. Queue\n";
+    cout << "8. Binary Tree\n";
+    cout << "9. Hash Table\n";
+    cout << "10. Run All Basic Structures\n";
     cout << "0. Back to Main Menu\n";
     cout << "================================\n";
     cout << "Enter your choice: ";
@@ -64,6 +66,7 @@ void run_all_basic() {
     run_queue();
     run_binary_tree();
     run_hash_table();
+    run_heap(); 
 }
 
 void run_all_composed() {
@@ -92,10 +95,11 @@ int main() {
                         case 3: run_linked_list(); break;
                         case 4: run_doubly_linked_list(); break;
                         case 5: run_stack(); break;
-                        case 6: run_queue(); break;
-                        case 7: run_binary_tree(); break;
-                        case 8: run_hash_table(); break;
-                        case 9: run_all_basic(); break;
+                        case 6: run_heap(); break;
+                        case 7: run_queue(); break;
+                        case 8: run_binary_tree(); break;
+                        case 9: run_hash_table(); break;
+                        case 10: run_all_basic(); break;
                         case 0: break;
                         default: cout << "Invalid choice!\n";
                     }

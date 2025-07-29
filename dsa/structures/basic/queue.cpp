@@ -20,6 +20,7 @@ public:
         if (rear == capacity) {
             throw overflow_error("Queue overflow");
         }
+        // push the item
         data[rear++] = value;
     }
 
@@ -27,6 +28,7 @@ public:
         if (front == rear) {
             throw underflow_error("Queue underflow");
         }
+        // return first item and increment the front by 1 (on next dequeu the front is gonna be the second item)
         return data[front++];
     }
 
@@ -56,5 +58,5 @@ void run_queue() {
     q.enqueue(30);
 
     cout << "Front element: " << q.peek() << endl;  
-    cout << "Dequeued element: " << q.dequeue() << endl;  
+    cout << "Dequeued element: " << q.dequeue() << endl; 
 }

@@ -26,7 +26,7 @@ public:
     int pop() {
         //* remove items from the top until you access the last item 
         if (top == -1) {
-            throw underflow_error("Stack underflow");
+            throw underflow_error("Stack underflow"); // stack empty
         }
         return data[top--];
     }
@@ -61,9 +61,9 @@ void run_stack() {
 
     Stack s(5);
 
-    s.push(10);
-    s.push(20);
-    s.push(30);
+    s.push(10); // 0
+    s.push(20); // 1
+    s.push(30); // 2
 
     cout << "Top element: " << s.peek() << endl;  
     cout << "Popped element: " << s.pop() << endl;

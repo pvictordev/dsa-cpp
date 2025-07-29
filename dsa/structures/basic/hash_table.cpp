@@ -72,7 +72,7 @@ public:
 };
 
 void run_hash_table() {
-    cout << "\n\nHash Table\n";
+    cout << "\nHash Table\n";
     HashTable ht(10);
 
     ht.insert(5);

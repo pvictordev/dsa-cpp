@@ -7,7 +7,10 @@ public:
     int data;
     Node* next;
 
-    Node(int value) : data(value), next(nullptr) {}
+    Node(int value) {
+        data = value;
+        next = nullptr;
+    }
 };
 
 class LinkedList {
@@ -16,7 +19,9 @@ private:
     Node* head;
 
 public:
-    LinkedList() : head(nullptr) {}
+    LinkedList() {
+        head = nullptr;
+    }
 
     void insert(int value) {
         Node* newNode = new Node(value);
@@ -43,12 +48,13 @@ public:
 };
 
 void run_linked_list() {
-    cout << "\n\nLinked List\n";
+    cout << "\nLinked List\n";
 
     LinkedList list;
 
     list.insert(10);
     list.insert(20);
     list.insert(30);
-    list.print();
+
+    list.print(); // [head] → [30] → [20] → [10] → nullptr
 }

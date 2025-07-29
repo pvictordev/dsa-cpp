@@ -8,7 +8,11 @@ public:
     Node* next;
     Node* prev;
 
-    Node(int value) : data(value), next(nullptr), prev(nullptr) {}
+    Node(int value) {
+        data = value;
+        next = nullptr;
+        prev = nullptr; 
+    }
 };
 
 class DoublyLinkedList {
@@ -17,7 +21,10 @@ private:
     Node* tail;
 
 public:
-    DoublyLinkedList() : head(nullptr), tail(nullptr) {}
+    DoublyLinkedList() {
+        head = nullptr;
+        tail = nullptr;
+    }
 
     void insertAtEnd(int value) {
         Node* newNode = new Node(value);

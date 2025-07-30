@@ -12,6 +12,10 @@ void run_binary_tree();
 void run_hash_table();
 void run_heap(); 
 
+// tree
+void run_bst(); 
+
+
 // Composed data structures
 void run_graph(); 
 void run_map(); 
@@ -67,6 +71,9 @@ void run_all_basic() {
     run_binary_tree();
     run_hash_table();
     run_heap(); 
+
+    // tree
+    run_bst(); 
 }
 
 void run_all_composed() {
@@ -136,6 +143,6 @@ int main() {
                 cout << "Invalid choice!\n";
         }
     } while (main_choice != 0);
-    
+ 
     return 0;
 }

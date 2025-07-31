@@ -48,7 +48,7 @@ public:
 };
 
 void run_linked_list() {
-    cout << "\nLinked List\n";
+    cout << "\n\nLinked List\n";
 
     LinkedList list;
 

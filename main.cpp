@@ -21,7 +21,9 @@ void run_deque();
 void run_polynom();
 
 // algos
+// sorting
 void run_quick_sort(); 
+void run_merge_sort(); 
 
 void display_menu() {
     cout << "\n===== Data Structure Demonstrations =====\n";
@@ -145,6 +147,6 @@ int main() {
     //     }
     // } while (main_choice != 0);
  
-    run_quick_sort(); 
+    run_merge_sort(); 
     return 0;
 }

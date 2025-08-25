@@ -147,6 +147,7 @@ int main() {
     //     }
     // } while (main_choice != 0);
  
-    run_merge_sort(); 
+    // run_merge_sort(); 
+    run_binary_tree(); 
     return 0;
 }

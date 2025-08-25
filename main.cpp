@@ -148,6 +148,7 @@ int main() {
     // } while (main_choice != 0);
  
     // run_merge_sort(); 
-    run_binary_tree(); 
+    // run_binary_tree(); 
+    run_polynom(); 
     return 0;
 }

@@ -21,6 +21,7 @@ void run_deque();
 void run_polynom();
 
 // algos
+void run_evaluate_postfix(); 
 // sorting
 void run_quick_sort(); 
 void run_merge_sort(); 
@@ -149,6 +150,7 @@ int main() {
  
     // run_merge_sort(); 
     // run_binary_tree(); 
-    run_polynom(); 
+    // run_polynom(); 
+    run_evaluate_postfix(); 
     return 0;
 }

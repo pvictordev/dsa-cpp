@@ -6,6 +6,8 @@ void run_array();
 void run_vector();
 void run_linked_list();
 void run_doubly_linked_list();
+void run_merge_linked_list(); 
+void run_merge_doubly_linked_list(); 
 void run_stack();
 void run_queue();
 void run_binary_tree();
@@ -151,6 +153,8 @@ int main() {
     // run_merge_sort(); 
     // run_binary_tree(); 
     // run_polynom(); 
-    run_evaluate_postfix(); 
+    // run_evaluate_postfix(); 
+    // run_merge_linked_list(); 
+    run_merge_doubly_linked_list(); 
     return 0;
 }

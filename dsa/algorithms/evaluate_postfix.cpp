@@ -16,8 +16,8 @@ string infixToPostfix(const string& s) {
         char c = s[i];
         
         if (c == ' ') {
-            continue
-        };
+            continue; 
+        }
 
         if (isalpha(c) || isdigit(c)) {            
             out += c;
@@ -50,7 +50,7 @@ string infixToPostfix(const string& s) {
     }
 
     if (!out.empty()) {
-        out.pop_back()
+        out.pop_back(); 
     };
 
     return out;

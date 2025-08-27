@@ -14,37 +14,51 @@ string infixToPostfix(const string& s) {
     stack<char> st;
     for (size_t i = 0; i < s.size(); ++i) {
         char c = s[i];
-        if (c == ' ') continue;
+        
+        if (c == ' ') {
+            continue
+        };
 
         if (isalpha(c) || isdigit(c)) {            
             out += c;
             out += ' ';
-        } else if (c == '(') {
+        } 
+
+        else if (c == '(') {
             st.push(c);
-        } else if (c == ')') {
+        } 
+
+        else if (c == ')') {
             while (!st.empty() && st.top() != '(') {
                 out += st.top(); out += ' '; st.pop();
             }
-            if (!st.empty() && st.top() == '(') st.pop();
-        } else { // operator
+            if (!st.empty() && st.top() == '(') {
+                st.pop();
+            }
+        } 
+
+        else { // operator
             while (!st.empty() && prec(st.top()) >= prec(c)) {
                 out += st.top(); out += ' '; st.pop();
             }
             st.push(c);
         }
     }
+
     while (!st.empty()) {
         out += st.top(); out += ' '; st.pop();
     }
-    if (!out.empty()) out.pop_back();
+
+    if (!out.empty()) {
+        out.pop_back()
+    };
+
     return out;
 }
 
 
-double evaluatePostfix
-    (
-    const string& postfix,const unordered_map<char, double>& val
-    ) {
+double evaluatePostfix(const string& postfix,const unordered_map<char, double>& val) 
+{
     stack<double> st;
     for (size_t i = 0; i < postfix.size(); ++i) {
         char c = postfix[i];
@@ -86,7 +100,7 @@ void run_evaluate_postfix() {
 
     double result = evaluatePostfix(postfix, val);
 
-    cout << "Infix:   " << infix << "\n";
-    cout << "Postfix: " << postfix << "\n";           // A B * C D * + E F / + + G -
-    cout << "Value (T): " << result << "\n";            // 8
+    cout << "Infix:   " << infix << "\n"; // A*B + C*D + E/F - G
+    cout << "Postfix: " << postfix << "\n"; // A B * C D * + E F / + + G -
+    cout << "Value (T): " << result << "\n"; // 8
 }

@@ -38,6 +38,26 @@ public:
         cout << endl;
     }
 
+    void sort() {
+        if (!head) return;
+
+        bool swapped;
+        do {
+            swapped = false;
+            Node* current = head;
+
+            while (current->next) {
+                if (current->data > current->next->data) {
+                    int temp = current->data;
+                    current->data = current->next->data;
+                    current->next->data = temp;
+                    swapped = true;
+                }
+                current = current->next;
+            }
+        } while (swapped);
+    }
+
     ~LinkedList() {
         while (head) {
             Node* temp = head;
@@ -56,5 +76,12 @@ void run_linked_list() {
     list.insert(20);
     list.insert(30);
 
+    cout << "Initial list: ";
     list.print(); // [head] → [30] → [20] → [10] → nullptr
+
+
+    list.sort();
+
+    cout << "\nSorted list: ";
+    list.print(); 
 }

@@ -27,6 +27,8 @@ void run_evaluate_postfix();
 // sorting
 void run_quick_sort(); 
 void run_merge_sort(); 
+void run_bubble_sort(); 
+
 
 void display_menu() {
     cout << "\n===== Data Structure Demonstrations =====\n";
@@ -155,6 +157,7 @@ int main() {
     // run_polynom(); 
     // run_evaluate_postfix(); 
     // run_merge_linked_list(); 
-    run_merge_doubly_linked_list(); 
+    // run_merge_doubly_linked_list(); 
+    run_bubble_sort(); 
     return 0;
 }

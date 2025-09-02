@@ -13,6 +13,7 @@ void run_queue();
 void run_binary_tree();
 void run_hash_table();
 void run_heap(); 
+void run_matrix(); 
 // tree
 void run_bst(); 
 
@@ -151,13 +152,7 @@ int main() {
     //             cout << "Invalid choice!\n";
     //     }
     // } while (main_choice != 0);
- 
-    // run_merge_sort(); 
-    // run_binary_tree(); 
-    // run_polynom(); 
-    // run_evaluate_postfix(); 
-    // run_merge_linked_list(); 
-    // run_merge_doubly_linked_list(); 
-    // run_bubble_sort(); 
+    run_matrix(); 
+
     return 0;
 }

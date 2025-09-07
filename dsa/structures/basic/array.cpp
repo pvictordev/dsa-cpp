@@ -1,32 +1,36 @@
 #include <iostream>
 using namespace std;
 
+template <typename T>
 class Array {
     
 private:
-    int* arr;
+    T* arr;
     int size;
 
 public:
-    Array(int s) {
+    Array(const T& s) {
         size = s;
-        arr = new int[size];
-        for (int i = 0; i < size; ++i)
+        arr = new T[size];
+        for (int i = 0; i < size; ++i) {
             arr[i] = 0;
+        }
     }
 
-    void set(int index, int value) {
-        if (index >= 0 && index < size)
+    void set(const T& index, const T& value) {
+        if (index >= 0 && index < size) {
             arr[index] = value;
+        }
     }
 
-    int get(int index) {
+    int get(const T& index) const {
         return (index >= 0 && index < size) ? arr[index] : -1;
     }
 
     void display() {
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < size; i++) {
             cout << arr[i] << " ";
+        }
         cout << endl;
     }
 

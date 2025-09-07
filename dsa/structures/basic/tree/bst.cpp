@@ -1,29 +1,24 @@
 #include <iostream>
 using namespace std;
 
+template <typename T>
 class BSTNode {
 public:
-    int data;
+    T data;
     BSTNode* left;
     BSTNode* right;
 
-    BSTNode(int value) : data(value), left(nullptr), right(nullptr) {}
+    BSTNode(T value) : data(value), left(nullptr), right(nullptr) {}
 };
 
+template <typename T>
 class BinarySearchTree {
 private:
-    BSTNode* root;
+    BSTNode<T>* root;
 
-public:
-    BinarySearchTree() : root(nullptr) {}
-
-    void insert(int value) {
-        root = insertRec(root, value);
-    }
-
-    BSTNode* insertRec(BSTNode* node, int value) {
+    BSTNode<T>* insertRec(BSTNode<T>* node, T value) {
         if (!node) {
-            return new BSTNode(value);
+            return new BSTNode<T>(value);
         }
 
         if (value < node->data) {
@@ -35,12 +30,7 @@ public:
         return node;
     }
 
-    void inorder() {
-        inorderRec(root);
-        cout << endl;
-    }
-
-    void inorderRec(BSTNode* node) {
+    void inorderRec(BSTNode<T>* node) {
         if (node) {
             inorderRec(node->left);
             cout << node->data << " ";
@@ -48,23 +38,35 @@ public:
         }
     }
 
-    ~BinarySearchTree() {
-        deleteTree(root);
-    }
-
-    void deleteTree(BSTNode* node) {
+    void deleteTree(BSTNode<T>* node) {
         if (node) {
             deleteTree(node->left);
             deleteTree(node->right);
             delete node;
         }
     }
+
+public:
+    BinarySearchTree() : root(nullptr) {}
+
+    void insert(T value) {
+        root = insertRec(root, value);
+    }
+
+    void inorder() {
+        inorderRec(root);
+        cout << endl;
+    }
+
+    ~BinarySearchTree() {
+        deleteTree(root);
+    }
 };
 
 void run_bst() {
     cout << "\nBST (Binary Search Tree)\n";
 
-    BinarySearchTree bst;
+    BinarySearchTree<int> bst;  
 
     bst.insert(50);
     bst.insert(30);
@@ -73,5 +75,5 @@ void run_bst() {
     bst.insert(40);
 
     cout << "In-order traversal: ";
-    bst.inorder();  // 20 30 40 50 70
+    bst.inorder(); 
 }

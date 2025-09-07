@@ -2,25 +2,30 @@
 #include <stdexcept>
 using namespace std;
 
+template <typename T>
 class HashTable {
+    
 private:
-    int* table;
+    T* table;
     int capacity;
     int size;
 
-    int hash(int key) {
+    int hash(const T& key) const {
         return key % capacity;  
     }
 
 public:
-    HashTable(int cap) : capacity(cap), size(0) {
-        table = new int[capacity];
+    HashTable(int cap) {
+        capacity = cap;
+        size = 0;
+        table = new T[capacity];
+
         for (int i = 0; i < capacity; ++i) {
             table[i] = -1;  // mark each bucket/slot in the hash table as empty
         }
     }
 
-    void printTable() {
+    void printTable() const {
         cout << "Hash Table Contents:\n";
         for (int i = 0; i < capacity; ++i) {
             cout << "[" << i << "]: ";
@@ -33,12 +38,13 @@ public:
         }
     }
 
-    void insert(int key) {
+    void insert(const T& key) {
         if (size == capacity) {
             throw overflow_error("Hash table is full");
         }
 
         int index = hash(key);
+
         while (table[index] != -1) {  
             index = (index + 1) % capacity;
         }
@@ -47,7 +53,7 @@ public:
         ++size;
     }
 
-    bool search(int key) {
+    bool search(const T& key) const {
         int index = hash(key);
         int start_index = index;
         while (table[index] != -1) {
@@ -62,7 +68,7 @@ public:
         return false;  
     }
 
-    void remove(int key) {
+    void remove(const T& key) {
         int index = hash(key);
         int start_index = index;
         while (table[index] != -1) {
@@ -87,7 +93,7 @@ public:
 //
 void run_hash_table() {
     cout << "\nHash Table\n";
-    HashTable ht(5);
+    HashTable<int> ht(5);
 
     ht.insert(10);
     ht.insert(20);

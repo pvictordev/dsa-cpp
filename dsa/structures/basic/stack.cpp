@@ -2,28 +2,29 @@
 #include <stdexcept>
 using namespace std;
 
+template <typename T>
 class Stack {
 
 private:
-    int* data;
+    T* data;
     int top;
     int capacity;
 
 public:
     Stack(int size) {
         capacity = size;
-        data = new int[capacity];
+        data = new T[capacity];
         top = -1;
     }
 
-    void push(int value) {
+    void push(const T& value) {
         if (top == capacity - 1) {
             throw overflow_error("Stack overflow");
         }
         data[++top] = value;
     }
 
-    int pop() {
+    T pop() {
         //* remove items from the top until you access the last item 
         if (top == -1) {
             throw underflow_error("Stack underflow"); // stack empty
@@ -31,18 +32,18 @@ public:
         return data[top--];
     }
 
-    bool isEmpty() {
+    bool isEmpty() const {
         return top == -1;
     }
 
-    int peek() {
+    T peek() const {
         if (top == -1) {
             throw underflow_error("Stack underflow");
         }
         return data[top];
     }
 
-    int search(int value) {
+    int search(const T& value) const {
         for (int i = top; i >= 0; --i) {
             if (data[i] == value) {
                 return top - i; 
@@ -59,7 +60,7 @@ public:
 void run_stack() {
     cout << "\nStack\n";
 
-    Stack s(5);
+    Stack<int> s(5);
 
     s.push(10); // 0
     s.push(20); // 1

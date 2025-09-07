@@ -1,35 +1,37 @@
 #include <iostream>
 using namespace std;
 
+template <typename T>
 class DNode {
 public:
-    int data;
+    T data;
     DNode* next;
     DNode* prev;
 
-    DNode(int value) {
+    DNode(const T& value) {
         data = value;
         next = nullptr;
         prev = nullptr;
     }
 };
 
+template <typename T>
 class DoublyLinkedList {
 private:
-    DNode* head;
+    DNode<T>* head;
 
 public:
     DoublyLinkedList() {
         head = nullptr;
     }
 
-    void append(int value) {
-        DNode* newNode = new DNode(value);
+    void append(const T& value) {
+        DNode<T>* newNode = new DNode<T>(value);
         if (!head) {
             head = newNode;
             return;
         }
-        DNode* current = head;
+        DNode<T>* current = head;
         while (current->next) {
             current = current->next;
         }
@@ -37,8 +39,8 @@ public:
         newNode->prev = current;
     }
 
-    void printForward() {
-        DNode* current = head;
+    void printForward() const {
+        DNode<T>* current = head;
         while (current) {
             cout << current->data << " ";
             current = current->next;
@@ -46,9 +48,9 @@ public:
         cout << endl;
     }
 
-    void printBackward() {
+    void printBackward() const {
         if (!head) return;
-        DNode* current = head;
+        DNode<T>* current = head;
         while (current->next) { 
             current = current->next;
         }
@@ -59,44 +61,48 @@ public:
         cout << endl;
     }
 
-    DNode* getHead() {
+    DNode<T>* getHead() const {
         return head;
     }
 
-    void setHead(DNode* node) {
+    void setHead(DNode<T>* node) {
         head = node;
+    }
+
+    ~DoublyLinkedList() {
+        DNode<T>* cur = head;
+        while (cur) {
+            DNode<T>* nxt = cur->next;
+            delete cur;
+            cur = nxt;
+        }
     }
 };
 
-
-DNode* merge_doubly_linked_list(DNode* head1, DNode* head2) {
+template <typename T>
+DNode<T>* merge_doubly_linked_list(DNode<T>* head1, DNode<T>* head2) {
     if (!head1) return head2;
     if (!head2) return head1;
 
-    DNode* result = nullptr;
+    DNode<T>* result = nullptr;
 
     if (head1->data < head2->data) {
         result = head1;
         result->next = merge_doubly_linked_list(head1->next, head2);
-        if (result->next) {
-            result->next->prev = result;
-        }
+        if (result->next) result->next->prev = result;
     } else {
         result = head2;
         result->next = merge_doubly_linked_list(head1, head2->next);
-        if (result->next) {
-            result->next->prev = result;
-        }
+        if (result->next) result->next->prev = result;
     }
 
     return result;
 }
 
-
 void run_merge_doubly_linked_list() {
     cout << "\n\nDoubly Linked List Merge\n";
 
-    DoublyLinkedList list1, list2;
+    DoublyLinkedList<int> list1, list2;
 
     list1.append(1);
     list1.append(3);
@@ -109,12 +115,11 @@ void run_merge_doubly_linked_list() {
     cout << "List1 (forward): "; list1.printForward();
     cout << "List2 (forward): "; list2.printForward();
 
-    DNode* mergedHead = merge_doubly_linked_list(list1.getHead(), list2.getHead());
+    DNode<int>* mergedHead = merge_doubly_linked_list(list1.getHead(), list2.getHead());
 
-    DoublyLinkedList mergedList;
+    DoublyLinkedList<int> mergedList;
     mergedList.setHead(mergedHead);
 
     cout << "Merged (forward): "; mergedList.printForward();
-    cout << "Merged (backward): "; mergedList.printBackward(); 
+    cout << "Merged (backward): "; mergedList.printBackward();
 }
-

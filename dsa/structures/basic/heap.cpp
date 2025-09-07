@@ -2,15 +2,17 @@
 #include <stdexcept>
 using namespace std;
 
+template <typename T>
 class MinHeap {
+
 private:
-    int* heapArray;
+    T* heapArray;
     int capacity;
     int currentSize;
 
     // Helper methods
-    void swap(int& a, int& b) {
-        int temp = a;
+    void swap(T& a, T& b) {
+        T temp = a;
         a = b;
         b = temp;
     }
@@ -46,71 +48,53 @@ private:
 public:
     MinHeap(int size) {
         capacity = size;
-        heapArray = new int[capacity];
+        heapArray = new T[capacity];
         currentSize = 0;
     }
 
-    void insert(int value) {
+    void insert(T value) {
         if (currentSize == capacity) {
             throw overflow_error("Heap is full");
         }
-
-        // Insert at the end
         heapArray[currentSize] = value;
         currentSize++;
-
-        // Fix the heap property
         heapifyUp(currentSize - 1);
     }
 
-    int extractMin() {
+    T extractMin() {
         if (currentSize <= 0) {
             throw underflow_error("Heap is empty");
         }
-
         if (currentSize == 1) {
             currentSize--;
             return heapArray[0];
         }
-
-        // Store the minimum value
-        int root = heapArray[0];
-
-        // Move last element to root
+        T root = heapArray[0];
         heapArray[0] = heapArray[currentSize - 1];
         currentSize--;
-
-        // Heapify down
         heapifyDown(0);
-
         return root;
     }
 
-    int getMin() {
+    T getMin() {
         if (currentSize <= 0) {
             throw underflow_error("Heap is empty");
         }
         return heapArray[0];
     }
 
-    bool isEmpty() {
-        return currentSize == 0;
-    }
-
-    int size() {
-        return currentSize;
-    }
+    bool isEmpty() { return currentSize == 0; }
+    int size() { return currentSize; }
 
     ~MinHeap() {
         delete[] heapArray;
     }
 };
 
+// Example usage
 void run_heap() {
     cout << "\nMin-Heap\n";
-
-    MinHeap heap(10);
-
+    MinHeap<int> heap(10);  
     heap.insert(30);
     heap.insert(20);
     heap.insert(10);

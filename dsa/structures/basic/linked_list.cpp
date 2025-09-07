@@ -1,36 +1,37 @@
 #include <iostream>
 using namespace std;
 
+template <typename T>
 class Node {
-
+    
 public:
-    int data;
-    Node* next;
+    T data;         
+    Node<T>* next;  
 
-    Node(int value) {
+    Node(const T& value) {
         data = value;
         next = nullptr;
     }
 };
 
+template <typename T>
 class LinkedList {
-
 private:
-    Node* head;
+    Node<T>* head;
 
 public:
     LinkedList() {
         head = nullptr;
     }
 
-    void insert(int value) {
-        Node* newNode = new Node(value);
+    void insert(const T& value) {
+        Node<T>* newNode = new Node<T>(value);
         newNode->next = head;
         head = newNode;
     }
 
-    void print() {
-        Node* current = head;
+    void print() const {
+        Node<T>* current = head;
         while (current) {
             cout << current->data << " ";
             current = current->next;
@@ -44,11 +45,11 @@ public:
         bool swapped;
         do {
             swapped = false;
-            Node* current = head;
+            Node<T>* current = head;
 
             while (current->next) {
-                if (current->data > current->next->data) {
-                    int temp = current->data;
+                if (current->data > current->next->data) { 
+                    T temp = current->data;
                     current->data = current->next->data;
                     current->next->data = temp;
                     swapped = true;
@@ -60,28 +61,27 @@ public:
 
     ~LinkedList() {
         while (head) {
-            Node* temp = head;
+            Node<T>* temp = head;
             head = head->next;
             delete temp;
         }
     }
 };
 
+// Demo
 void run_linked_list() {
     cout << "\n\nLinked List\n";
 
-    LinkedList list;
+    LinkedList<int> list;
 
     list.insert(10);
     list.insert(20);
     list.insert(30);
 
     cout << "Initial list: ";
-    list.print(); // [head] → [30] → [20] → [10] → nullptr
-
+    list.print();
 
     list.sort();
-
-    cout << "\nSorted list: ";
-    list.print(); 
+    cout << "Sorted list: ";
+    list.print();
 }

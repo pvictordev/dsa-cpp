@@ -2,21 +2,22 @@
 #include <stdexcept>
 using namespace std;
 
+template <typename T>
 class Queue {
 
 private:
-    int* data;
+    T* data;
     int front, rear, capacity;
 
 public:
     Queue(int size) {
         capacity = size;
-        data = new int[capacity];
+        data = new T[capacity];
         front = 0;
         rear = 0;
     }
 
-    void enqueue(int value) {
+    void enqueue(const T& value) {
         if (rear == capacity) {
             throw overflow_error("Queue overflow");
         }
@@ -24,11 +25,11 @@ public:
         data[rear++] = value;
     }
 
-    int dequeue() {
+    T dequeue() {
         if (front == rear) {
             throw underflow_error("Queue underflow");
         }
-        // return first item and increment the front by 1 (on next dequeu the front is gonna be the second item)
+        // return first item and increment the front by 1 (on next deque the front is gonna be the second item)
         return data[front++];
     }
 
@@ -36,7 +37,7 @@ public:
         return front == rear;
     }
 
-    int peek() {
+    T peek() const {
         if (front == rear) {
             throw underflow_error("Queue underflow");
         }
@@ -51,7 +52,7 @@ public:
 void run_queue() {
     cout << "\nQueue\n";
 
-    Queue q(5);
+    Queue<int> q(5);
 
     q.enqueue(10);
     q.enqueue(20);

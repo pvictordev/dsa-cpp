@@ -1,24 +1,26 @@
 #include <iostream>
 using namespace std;
 
+template <typename T>
 class Node {
 
 public:
     int data;
-    Node* next;
-    Node* prev;
+    Node<T>* next;  
+    Node<T>* prev;  
 
-    Node(int value) {
+    Node(const T& value) {
         data = value;
         next = nullptr;
         prev = nullptr; 
     }
 };
 
+template <typename T>
 class DoublyLinkedList {
 private:
-    Node* head;
-    Node* tail;
+    Node<T>* head;
+    Node<T>* tail;
 
 public:
     DoublyLinkedList() {
@@ -26,8 +28,8 @@ public:
         tail = nullptr;
     }
 
-    void insertAtEnd(int value) {
-        Node* newNode = new Node(value);
+    void insertAtEnd(const T& value) {
+        Node<T>* newNode = new Node<T>(value);
         if (tail) {
             tail->next = newNode;
             newNode->prev = tail;
@@ -37,8 +39,8 @@ public:
         }
     }
 
-    void print() {
-        Node* current = head;
+    void print() const {
+        Node<T>* current = head;
         while (current) {
             cout << current->data << " ";
             current = current->next;
@@ -48,7 +50,7 @@ public:
 
     ~DoublyLinkedList() {
         while (head) {
-            Node* temp = head;
+            Node<T>* temp = head;
             head = head->next;
             delete temp;
         }
@@ -58,7 +60,7 @@ public:
 void run_doubly_linked_list() {
     cout << "\nDoubly Linked List\n";
 
-    DoublyLinkedList list;
+    DoublyLinkedList<int> list;
 
     list.insertAtEnd(30);
     list.insertAtEnd(40);

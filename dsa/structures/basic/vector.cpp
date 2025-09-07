@@ -1,10 +1,12 @@
 #include <iostream>
+#include <stdexcept>
 using namespace std;
 
+template <typename T>
 class Vector {
 
 private:
-    int* data;
+    T* data;
     int size;
     int capacity;
 
@@ -12,15 +14,13 @@ public:
     Vector() {
         size = 0;
         capacity = 1;
-        data = new int[capacity];
+        data = new T[capacity];
     }
 
-    void push_back(int value) {
-        // reallocating the memory
-        // * we should do this because C++ do not allow us to increase the size of a fixed size array allocated with: new int[size]
+    void push_back(const T& value) {
         if (size == capacity) {
-            capacity *= 2;  
-            int* new_data = new int[capacity];
+            capacity *= 2;
+            T* new_data = new T[capacity];
             for (int i = 0; i < size; ++i) {
                 new_data[i] = data[i];
             }
@@ -30,14 +30,14 @@ public:
         data[size++] = value;
     }
 
-    int get(int index) {
+    T get(int index) const {
         if (index < 0 || index >= size) {
             throw out_of_range("Index out of range");
         }
         return data[index];
     }
 
-    int getSize() {
+    int getSize() const {
         return size;
     }
 
@@ -46,11 +46,10 @@ public:
     }
 };
 
-
+// Example usage
 void run_vector() {
-    cout << "\nVector\n";
-
-    Vector v;
+    cout << "\nVector<int>\n";
+    Vector<int> v;
 
     v.push_back(10);
     v.push_back(20);
@@ -61,4 +60,5 @@ void run_vector() {
     for (int i = 0; i < v.getSize(); ++i) {
         cout << v.get(i) << " ";
     }
+    cout << "\n";
 }

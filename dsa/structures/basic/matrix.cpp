@@ -1,9 +1,11 @@
 #include <iostream>
 using namespace std;
 
+template <typename T>
 class Matrix {
+
 private:
-    int** mat;
+    T** mat;
     int rows;    
     int cols;    
 
@@ -12,7 +14,7 @@ public:
         rows = r;
         cols = c;
 
-        mat = new int*[rows];
+        mat = new T*[rows];
         
         for (int i = 0; i < rows; i++) {
             mat[i] = new int[cols];  
@@ -23,20 +25,20 @@ public:
         }
     }
 
-    void set(int row, int col, int value) {
+    void set(const T& row, const T& col, const T& value) {
         if (row >= 0 && row < rows && col >= 0 && col < cols) {
             mat[row][col] = value;
         }
     }
 
-    int get(int row, int col) {
+    T get(const T& row, const T& col) const {
         if (row >= 0 && row < rows && col >= 0 && col < cols) {
             return mat[row][col];
         }
         return -1; 
     }
 
-    void display() {
+    void display() const {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 cout << mat[i][j] << " ";
@@ -55,7 +57,7 @@ public:
 void run_matrix() {
     cout << "Matrix\n";
 
-    Matrix m(3, 3); 
+    Matrix<int> m(3, 3); 
 
     m.set(0, 0, 1);
     m.set(0, 1, 2);

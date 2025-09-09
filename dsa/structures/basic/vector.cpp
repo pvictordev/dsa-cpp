@@ -48,7 +48,7 @@ public:
 
 // Example usage
 void run_vector() {
-    cout << "\nVector<int>\n";
+    cout << "\nVector\n";
     Vector<int> v;
 
     v.push_back(10);
